@@ -1,0 +1,33 @@
+local syntax = require "core.syntax"
+
+syntax.add {
+  name = "Axe",
+  files = { "%.axe$" },
+  comment = "//",
+  patterns = {
+    { pattern = "//.*$", type = "comment" },
+    { pattern = "/%*.-%*/", type = "comment" },
+    { pattern = "'(\\.|[^'])*'", type = "string" },
+    { pattern = "\"(\\.|[^\"])*\"", type = "string" },
+    { pattern = "`(\\.|[^`])*`", type = "string" },
+    { pattern = "%b%d+%.%d+([eE][+-]?%d+)?%b", type = "number" },
+    { pattern = "%b%d+%b", type = "number" },
+    { pattern = "\\b(if|when|is|elif|else|for|in|switch|case|default|parallel|single|loop|break|continue|return|while|test|assert|use|platform|and|or|to|mod|enum|union|unsafe|opaque|extern|foreign)\\b", type = "keyword" },
+    { pattern = "\\b(pub|def|val|mut|model|macro|raw|overload|list|put)\\b", type = "keyword2" },
+    { pattern = "\\b(ref|ref_of|addr_of|cast)\\b", type = "keyword" },
+    { pattern = "\\b(u8|i8|u16|i16|u32|i32|u64|i64|f32|f64|bool|char|void|usize|generic|untyped)\\b", type = "type" },
+    { pattern = "\\bchar%*\\b", type = "type" },
+    { pattern = "\\b[A-Z][a-zA-Z0-9_]*\\b", type = "type" },
+    { pattern = "\\b(def|macro)\\s+([a-zA-Z_][a-zA-Z0-9_]*)", type = {"keyword2", "function"} },
+    { pattern = "\\b([a-z_][a-zA-Z0-9_]*)%s*%(", type = "function" },
+    { pattern = "[%+%-%*/%%]", type = "operator" },
+    { pattern = "==|!=|<=|>=|<|>", type = "operator" },
+    { pattern = "\\b(and|or)\\b", type = "operator" },
+    { pattern = "=", type = "operator" },
+    { pattern = "\\b(true|false)\\b", type = "literal" },
+    { pattern = "\\bnil\\b", type = "literal" },
+    { pattern = "\\b[A-Z_][A-Z0-9_]*\\b", type = "literal" },
+    { pattern = "\\braw%s*%{.-%}", type = "keyword2" },
+  },
+  symbols = {},
+}
