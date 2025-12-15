@@ -7,7 +7,7 @@ local isuf = [[(?:[lL][uU]|ll[uU]|LL[uU]|[uU][lL]\b|[uU]ll|[uU]LL|[uU]|[lL]\b|ll
 
 syntax.add {
   name = "Axe",
-  files = { "%.axe$" },
+  files = { "%.axe$", "%.axec$" },
   comment = "//",
   block_comment = { "/*", "*/" },
   patterns = {
